@@ -40,8 +40,11 @@ export default function Home() {
         <Box
           sx={{
             display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
+            width: "100%",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            p: 2,
           }}
         >
           <Typography variant="h6" sx={{ color: "white" }}>
@@ -49,27 +52,6 @@ export default function Home() {
           </Typography>
           <Typography variant="body2" sx={{ color: "lightgray" }}>
             {currentTime}
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            gap: 2,
-          }}
-        >
-          <Typography variant="body1" sx={{ color: "white" }}>
-            Total Consumption: {totalConsumption} kWh
-          </Typography>
-          <Typography variant="body1" sx={{ color: "white" }}>
-            Peak Load (last hour): {peakLoad} kW
-          </Typography>
-          <Typography variant="body1" sx={{ color: "white" }}>
-            Alerts: {alerts}
-          </Typography>
-          <Typography variant="body1" sx={{ color: "white" }}>
-            Current District: {currentDistrict}
           </Typography>
         </Box>
       </Paper>
