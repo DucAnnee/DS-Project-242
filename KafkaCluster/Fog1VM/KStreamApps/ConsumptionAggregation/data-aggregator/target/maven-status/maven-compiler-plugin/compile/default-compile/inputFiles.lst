@@ -1,0 +1,16 @@
+D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\Fog1VM\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\CloudForwarderMainApp.java
+D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\Fog1VM\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\CloudForwardingProcessor.java
+D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\Fog1VM\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\ConsumptionTimestampExtractor.java
+D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\Fog1VM\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\CustomKeyValueStore.java
+D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\Fog1VM\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\CustomKeyValueStoreBuilder.java
+D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\Fog1VM\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\DataAggregatorMainApp.java
+D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\Fog1VM\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\DataAggregatorProcessor.java
+D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\Fog1VM\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\DistrictAggregatorMainApp.java
+D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\Fog1VM\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\DistrictAggregatorProcessor.java
+D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\Fog1VM\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\DistrictMinuteSumMainApp.java
+D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\Fog1VM\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\DistrictMinuteSumProcessor.java
+D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\Fog1VM\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\DistrictPeakPowerMainApp.java
+D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\Fog1VM\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\DistrictPeakPowerProcessor.java
+D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\Fog1VM\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\HouseholdConsumption.java
+D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\Fog1VM\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\HouseholdConsumptionSerde.java
+D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\Fog1VM\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\WardSumTimestampExtractor.java
