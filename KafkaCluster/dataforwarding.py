@@ -5,7 +5,7 @@ import argparse
 # --- Configuration ---
 DEFAULT_LISTEN_HOST = '0.0.0.0'  # Listen on all available network interfaces
 DEFAULT_LISTEN_PORT = 9091       # Port to listen on in your LAN
-DEFAULT_VM_IP = '192.168.182.128'  # <<< CHANGE THIS to your VM's IP address
+DEFAULT_VM_IP = '192.168.182.131'  # <<< CHANGE THIS to your VM's IP address
 DEFAULT_VM_PORT = 9092         # <<< CHANGE THIS to your Kafka server's port in the VM
 BUFFER_SIZE = 4096
 

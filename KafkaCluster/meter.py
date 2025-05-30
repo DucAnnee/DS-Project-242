@@ -54,7 +54,7 @@ class Meter:
         self._current_time = datetime(2025, 5, 22, 10, 0, 0, tzinfo=timezone.utc)
         self.max_step = max_step
         self.producer = KafkaProducer(
-            bootstrap_servers="192.168.1.135:9091",
+            bootstrap_servers="192.168.182.128:9092",
             value_serializer=lambda v: json.dumps(v).encode("utf-8"),
             partitioner=meter_partitioner,
         )
