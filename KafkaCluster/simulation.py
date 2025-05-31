@@ -1,7 +1,7 @@
 from meter import Meter
 from argparse import ArgumentParser
 from threading import Thread
-
+import datetime
 
 def parse_arg():
     parser = ArgumentParser(
@@ -21,6 +21,8 @@ def parse_arg():
 
 
 def main():
+    start_time = datetime.datetime.now()
+    print(f"Script started at: {start_time.strftime('%Y-%m-%d %H:%M:%S.%f')[:-2]}")
     num_meters = 5
     wards = {"ward1": "01", "ward2": "02", "ward3": "03"}
     district = {"district1": "01", "district2": "02", "district3": "03"}
@@ -39,8 +41,10 @@ def main():
                 thread = Thread(target=meter.send_data)
                 threads.append(thread)
                 thread.start()
-
-    [t.join() for t in threads]
+    
+    for i in range(num_meters):
+        threads[i].join()
+        
     print("im done, kms")
 
 

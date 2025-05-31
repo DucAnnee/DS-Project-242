@@ -64,7 +64,7 @@ class Meter:
             print(
                 f"[{self.get_id()}] Starting to send data to topic '{self.get_topic()}' every {self.get_interval()} seconds..."
             )
-        for i in range(10000):
+        for i in range(1000):
             data = self.get_data()
             self.producer.send(
                 self.get_topic(), key=bytes(self.get_id(), "utf-8"), value=data

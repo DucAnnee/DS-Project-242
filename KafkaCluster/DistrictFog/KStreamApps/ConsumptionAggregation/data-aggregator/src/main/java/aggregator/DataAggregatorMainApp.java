@@ -19,8 +19,8 @@ import java.util.concurrent.CountDownLatch;
 
 public class DataAggregatorMainApp {
 
-    private static final String APPLICATION_ID = "iot-data-aggregator-app-3";
-    private static final String BOOTSTRAP_SERVERS = "192.168.182.128:9092";
+    private static final String APPLICATION_ID = "iot-data-aggregator-app-1";
+    private static final String BOOTSTRAP_SERVERS = "localhost:9092";
     private static final String INPUT_TOPIC = "ward3";
     private static final String OUTPUT_TOPIC = "ward3.1h.sum";
     private static final String AGGREGATION_STORE_NAME = "HourlyConsumptionStore";

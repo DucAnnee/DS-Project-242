@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="aggregator.AppTest" time="0.054" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="aggregator.AppTest" time="0.058" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\tuank\AppData\Local\Temp\surefire16524462533274790299\surefirebooter-20250530233054267_3.jar C:\Users\tuank\AppData\Local\Temp\surefire16524462533274790299 2025-05-30T23-30-54_080-jvmRun1 surefire-20250530233054267_1tmp surefire_0-20250530233054267_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\tuank\AppData\Local\Temp\surefire15969285991537541665\surefirebooter-20250530235852716_3.jar C:\Users\tuank\AppData\Local\Temp\surefire15969285991537541665 2025-05-30T23-58-52_539-jvmRun1 surefire-20250530235852716_1tmp surefire_0-20250530235852716_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\CityCloud\KStreamApps\ConsumptionAggregation\data-aggregator\target\test-classes;D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\CityCloud\KStreamApps\ConsumptionAggregation\data-aggregator\target\classes;C:\Users\tuank\.m2\repository\org\apache\kafka\kafka-clients\4.0.0\kafka-clients-4.0.0.jar;C:\Users\tuank\.m2\repository\com\github\luben\zstd-jni\1.5.6-6\zstd-jni-1.5.6-6.jar;C:\Users\tuank\.m2\repository\org\lz4\lz4-java\1.8.0\lz4-java-1.8.0.jar;C:\Users\tuank\.m2\repository\org\xerial\snappy\snappy-java\1.1.10.5\snappy-java-1.1.10.5.jar;C:\Users\tuank\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\tuank\.m2\repository\org\apache\kafka\kafka-streams\4.0.0\kafka-streams-4.0.0.jar;C:\Users\tuank\.m2\repository\org\rocksdb\rocksdbjni\9.7.3\rocksdbjni-9.7.3.jar;C:\Users\tuank\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.16.2\jackson-annotations-2.16.2.jar;C:\Users\tuank\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0\junit-jupiter-api-5.11.0.jar;C:\Users\tuank\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\tuank\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0\junit-platform-commons-1.11.0.jar;C:\Users\tuank\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\tuank\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.0\junit-jupiter-params-5.11.0.jar;C:\Users\tuank\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.18.2\jackson-databind-2.18.2.jar;C:\Users\tuank\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.18.2\jackson-core-2.18.2.jar;C:\Users\tuank\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.18.2\jackson-datatype-jsr310-2.18.2.jar;C:\Users\tuank\.m2\repository\org\slf4j\slf4j-simple\2.0.13\slf4j-simple-2.0.13.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\tuank\AppData\Local\Temp\surefire16524462533274790299\surefirebooter-20250530233054267_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\tuank\AppData\Local\Temp\surefire15969285991537541665\surefirebooter-20250530235852716_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.1+12-LTS-29"/>
@@ -58,5 +58,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="aggregator.AppTest" time="0.026"/>
+  <testcase name="shouldAnswerWithTrue" classname="aggregator.AppTest" time="0.029"/>
 </testsuite>

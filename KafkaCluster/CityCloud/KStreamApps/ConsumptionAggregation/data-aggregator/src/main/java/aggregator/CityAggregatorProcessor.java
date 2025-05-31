@@ -38,7 +38,7 @@ public class CityAggregatorProcessor implements Processor<String, Double, String
         }
 
         this.context.schedule(Duration.ofMinutes(1), PunctuationType.STREAM_TIME, this::punctuateHourlyDistrictSum);
-        System.out.println("DistrictAggregatorProcessor (from Ward Sums) initialized with store: " + storeName + " and scheduled punctuation.");
+        System.out.println("CityAggregatorProcessor (from District Sums) initialized with store: " + storeName + " and scheduled punctuation.");
     }
 
     @Override
@@ -113,7 +113,7 @@ public class CityAggregatorProcessor implements Processor<String, Double, String
                 long windowStartMillis = entry.getKey();
                 double districtSum = entry.getValue();
 
-                String outputKey = "district1_" + Instant.ofEpochMilli(windowStartMillis).toString();
+                String outputKey = "city_" + Instant.ofEpochMilli(windowStartMillis).toString();
                 // Forwarding with the current stream timestamp which is appropriate for windowed output
                 Record<String, Double> aggregatedRecord = new Record<>(outputKey, districtSum, currentStreamTimestamp);
                 context.forward(aggregatedRecord);

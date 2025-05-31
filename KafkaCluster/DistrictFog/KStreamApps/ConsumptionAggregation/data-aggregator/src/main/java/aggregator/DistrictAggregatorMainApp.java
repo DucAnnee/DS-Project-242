@@ -22,7 +22,7 @@ import java.util.concurrent.CountDownLatch;
 public class DistrictAggregatorMainApp {
 
     private static final String APPLICATION_ID = "iot-district-hourly-aggregator-app-1"; // Updated App ID
-    private static final String BOOTSTRAP_SERVERS = "192.168.182.128:9092";
+    private static final String BOOTSTRAP_SERVERS = "localhost:9092";
     // Input from multiple ward hourly sum topics
     private static final List<String> INPUT_TOPICS = Arrays.asList(
             "ward1.1h.sum", // Assuming this is the output of DataAggregator for ward1
