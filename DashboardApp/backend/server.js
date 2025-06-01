@@ -3,24 +3,24 @@ const express = require("express");
 const http = require("http");
 const socketIO = require("socket.io");
 
-const BROKER = "localhost:9092";
+const BROKER = "52.229.164.8:9091";
 const PORT = 4000;
 const TOPICS = [
-  "city.total.1h",
-  "city.peak.1h",
-  "dist1.total.1h",
-  "dist2.total.1h",
-  "dist3.total.1h",
-  "city.total.1m",
-  "dist1.total.1m",
-  "dist2.total.1m",
-  "dist3.total.1m",
+  "district1.1h.sum",
+  "district2.1h.sum",
+  "city.1h.sum",
+  "district1.1m.sum",
+  "district2.1m.sum",
+  "city.1m.sum",
+  "district1.1h.peak",
+  "district2.1h.peak",
+  "city.1h.peak",
 ];
 
 async function start() {
   // Kafka setup
   const kafka = new Kafka({ brokers: [BROKER] });
-  const consumer = kafka.consumer({ groupId: "dashboard-group" });
+  const consumer = kafka.consumer({ groupId: "dashboard-group-00" });
   await consumer.connect();
   for (const topic of TOPICS) {
     await consumer.subscribe({ topic, fromBeginning: false });
@@ -33,11 +33,12 @@ async function start() {
 
   // In‐memory state
   const state = {
-    total1h: null,
-    peak1h: null,
-    districts1h: { dist1: null, dist2: null, dist3: null },
+    total1h: 0,
+    peak1h: 0,
     city1m: [],
-    districts1m: { dist1: [], dist2: [], dist3: [] },
+    districts1h_sum: { district1: 0, district2: 0 },
+    districts1h_peak: { district1: 0, district2: 0 },
+    districts1m_sum: { district1: [], district2: [] },
   };
 
   const appendAndTrim = (arr, point) => {
@@ -46,32 +47,60 @@ async function start() {
   };
 
   await consumer.run({
+    partitionsConsumedConcurrently: 9,
     eachMessage: async ({ topic, message }) => {
-      const { timestamp, value } = JSON.parse(message.value.toString());
+      if (!message.value) return; // skip tombstones
+
+      let payload;
+      try {
+        payload = JSON.parse(message.value.toString());
+      } catch (e) {
+        console.error("Bad JSON", topic, message.offset);
+        return;
+      }
 
       // 1h topics
-      if (topic === "city.total.1h") {
+      if (topic === "city.1h.sum") {
+        const value = payload.hourly_total_consumption;
         state.total1h = value;
-      } else if (topic === "city.peak.1h") {
+      } else if (topic === "city.1h.peak") {
+        const value = payload.peak_household_consumption;
         state.peak1h = value;
-      } else if (/^dist[123]\.total\.1h$/.test(topic)) {
-        const d = topic.split(".")[0]; // 'dist1' | 'dist2' | 'dist3'
-        state.districts1h[d] = value;
+      } else if (/^district[12]\.1h\.sum$/.test(topic)) {
+        const value = payload.hourly_total_consumption;
+        const d = topic.split(".")[0]; // 'district1' | 'district2'
+        state.districts1h_sum[d] = value;
+      } else if (/^district[12]\.1h\.peak$/.test(topic)) {
+        const d = topic.split(".")[0];
+        state.districts1h_peak[d] = payload.peak_household_consumption;
       }
 
       // 1m topics
-      else if (topic === "city.total.1m") {
-        appendAndTrim(state.city1m, { timestamp, value });
+      else if (topic === "city.1m.sum") {
+        const timestamp = payload.timestamp_minute;
+        // convert timestamp to HH:MM format
+        const date = new Date(timestamp).toISOString().slice(11, 16);
+
+        const value = payload.total_consumption;
+        appendAndTrim(state.city1m, { date, value });
+        // console.log("Updated city1m:", state.city1m);
         io.emit("city1m", state.city1m);
-      } else if (/^dist[123]\.total\.1m$/.test(topic)) {
+      } else if (/^district[12]\.1m\.sum$/.test(topic)) {
+        const timestamp = payload.timestamp_minute;
+        // convert timestamp to HH:MM format
+        const date = new Date(timestamp).toISOString().slice(11, 16);
+
+        const value = payload.total_consumption;
         const d = topic.split(".")[0];
-        appendAndTrim(state.districts1m[d], { timestamp, value });
-        io.emit(`${d}1m`, state.districts1m[d]);
+        appendAndTrim(state.districts1m_sum[d], { date, value });
+        // console.log(`Updated ${d}1m:`, state.districts1m_sum[d]);
+        io.emit(`${d}1m`, state.districts1m_sum[d]);
       }
 
-      // Compute max district
-      const maxDistrict = Object.entries(state.districts1h).reduce(
-        (best, [key, val]) => (val > best.value ? { key, value: val } : best),
+      // Compute most consuming district
+      const maxDistrict = Object.entries(state.districts1h_sum).reduce(
+        (best, [key, val]) =>
+          val != null && val > best.value ? { key, value: val } : best,
         { key: null, value: -Infinity },
       );
 
@@ -79,9 +108,13 @@ async function start() {
       io.emit("stats1h", {
         total1h: state.total1h,
         peak1h: state.peak1h,
-        districts1h: state.districts1h, // <-- now included
+        districts1h_sum: state.districts1h_sum, // <-- now included
+        districts1h_peak: state.districts1h_peak,
         maxDistrict,
       });
+
+      // Log the state
+      // console.log(state);
     },
   });
 
