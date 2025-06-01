@@ -43,6 +43,7 @@ class Meter:
         self,
         meter_id: str,
         topic: str,
+        bootstrap_servers: list[str],
         start: float = 0.0,
         max_step: float = 0.5,
         interval: int = 60,
@@ -51,10 +52,12 @@ class Meter:
         self.TOPIC = topic
         self.INTERVAL = interval  # seconds
         self._current_consumption = start
-        self._current_time = datetime(2025, 5, 22, 10, 0, 0, tzinfo=timezone.utc)
+        self._current_time = datetime.now(tz=timezone.utc).replace(
+            minute=0, second=0, microsecond=0
+        )
         self.max_step = max_step
         self.producer = KafkaProducer(
-            bootstrap_servers="192.168.182.128:9092",
+            bootstrap_servers=bootstrap_servers,
             value_serializer=lambda v: json.dumps(v).encode("utf-8"),
             partitioner=meter_partitioner,
         )
@@ -64,7 +67,7 @@ class Meter:
             print(
                 f"[{self.get_id()}] Starting to send data to topic '{self.get_topic()}' every {self.get_interval()} seconds..."
             )
-        for i in range(1000):
+        while True:
             data = self.get_data()
             self.producer.send(
                 self.get_topic(), key=bytes(self.get_id(), "utf-8"), value=data
@@ -98,17 +101,3 @@ class Meter:
     def shutdown(self):
         self.producer.flush()
         self.producer.close()
-
-
-if __name__ == "__main__":
-    meter = Meter(meter_id="01-01-0001", topic="ward1")
-    # for i in range(5):
-    #     data = meter.get_data()
-    #     meter.producer.send(
-    #         meter.get_topic(), key=bytes(meter.get_id(), "utf-8"), value=data
-    #     )
-    # meter.shutdown()
-    try:
-        meter.send_data()
-    except KeyboardInterrupt:
-        print("Stopping meter sending...")

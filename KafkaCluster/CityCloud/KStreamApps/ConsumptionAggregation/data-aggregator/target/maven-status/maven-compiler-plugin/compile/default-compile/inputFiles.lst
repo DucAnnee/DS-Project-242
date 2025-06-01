@@ -1,8 +1,0 @@
-D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\CityCloud\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\CityAggregator.java
-D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\CityCloud\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\CityAggregatorProcessor.java
-D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\CityCloud\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\ConsumptionTimestampExtractor.java
-D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\CityCloud\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\CustomKeyValueStore.java
-D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\CityCloud\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\CustomKeyValueStoreBuilder.java
-D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\CityCloud\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\HouseholdConsumption.java
-D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\CityCloud\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\HouseholdConsumptionSerde.java
-D:\0_Academic\H242\Distributed\DS-Project-242\KafkaCluster\CityCloud\KStreamApps\ConsumptionAggregation\data-aggregator\src\main\java\aggregator\WardSumTimestampExtractor.java
